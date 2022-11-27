@@ -2,14 +2,12 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var timeDisplayEl = $("#time-display");
-var timeBlock = $('.time-block')
-var saveButton = $('.fa-save')
-var desCription = $('.description')
-var hour9 = $('#hour-9')
+var timeBlock = $(".time-block");
+var saveButton = $(".fa-save");
+var desCription = $(".description");
 
-
+var rightNow;
 $(function () {
-  
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -31,12 +29,14 @@ $(function () {
 });
 
 function displayTime() {
-  var rightNow = dayjs().format("dddd, MMMM D");
+  rightNow = dayjs().format("dddd, MMMM D");
   timeDisplayEl.text(rightNow);
 }
 
+displayTime();
+var hourNow = dayjs().format("H");
 
-
+console.log(hourNow);
 // saveButton.click(function (event) {
 //   event.preventDefault();
 //   var element = event.target
@@ -47,26 +47,44 @@ function displayTime() {
 // }
 // );
 
+function saveText() {
+  var saveIcon = document.querySelectorAll(".fas");
+  for (var i = 0; i < saveIcon.length; i++) {
+    var currentItem = saveIcon[i];
+    currentItem.setAttribute("id", [i]);
 
-//$('element').attr('id', 'value');
-var saveIcon = document.querySelectorAll(".fas")
-for(var i = 0; i < saveIcon.length; i++) {
-  var currentItem = saveIcon[i]
-  currentItem.setAttribute('id', [i])
-
-saveIcon[i].addEventListener("click", function (event) {
-  
-  event.preventDefault();
-  var element = event.target;
-  if (element.matches(".fa-save")) {
-    var textarea = element.parentElement.previousElementSibling.value
-    var test = element.getAttribute('id')
-    localStorage.setItem(test, textarea);
-    console.log(currentItem)
+    saveIcon[i].addEventListener("click", function (event) {
+      event.preventDefault();
+      var element = event.target;
+      if (element.matches(".fa-save")) {
+        var textarea = element.parentElement.previousElementSibling.value;
+        var test = element.getAttribute("id");
+        localStorage.setItem(test, textarea);
+        console.log(currentItem);
+      }
+    });
+  }
 }
-})};
 
+// function changeColor() {
 
+// }
 
+var future = document.querySelector(".container-fluid");
+var newBlock = document.createElement("div");
+var newText = document.createElement("textarea");
+newText.classList.add('col-8')
+newText.classList.add('col-md-10')
+newText.classList.add('description')
+newText.setAttribute('rows', 3)
 
-displayTime();
+newBlock.setAttribute("id", "hour-12");
+newBlock.classList.add("time-block");
+newBlock.classList.add("row");
+newBlock.classList.add("future");
+
+newBlock.appendChild(newText)
+console.log(newBlock);
+future.appendChild(newBlock);
+
+saveText();
