@@ -33,9 +33,9 @@ function displayTime() {
   timeDisplayEl.text(rightNow);
 }
 
-displayTime();
+// displayTime();
 var hourNow = dayjs().format("h");
-hourNow = 9
+hourNow = 3
 
 // console.log(hourNow)
 
@@ -65,13 +65,13 @@ function timeBlockHTML() {
   for(var i = 0; i < timeBlock.length; i++) {
     timeBlock[i].classList.remove('past','present','future')
     
-    if(hourNow > timeBlock[i].innerText.match(/\d{9}/)) {
-      timeBlock[i].classList.add('past')
+    if(hourNow === timeBlock[i].innerText.match(/\d{9}/)) {
+      timeBlock[i].classList.add('present')
     }
     else if(hourNow < timeBlock[i].innerText.match(/\d{9}/)) {
-      timeBlock[i].classList.add('future')
+      timeBlock[i].classList.add('past')
     } else {
-      timeBlock[i].classList.add('present')
+      timeBlock[i].classList.add('future')
     }
   }
 }
@@ -82,8 +82,8 @@ timeBlockHTML()
 
 
 
-console.log(timeBlock[0].innerText.match(/[0-9]+/g))
-console.log(timeBlock[0].classList)
+// console.log(timeBlock[0].innerText.match(/[0-9]+/g))
+// console.log(timeBlock[0].classList)
 
 
 // var newTest = timeBlock[0].innerText.match(/[a-zA-Z]+|[0-9]+/g)
@@ -94,9 +94,6 @@ var numBlocks = 5;
 
 for (var i = 0; i <= numBlocks; i++) {
 
-  
-
-
   var future = document.querySelector(".container-fluid");
   var newBlock = document.createElement("div");
   var newText = document.createElement("textarea");
@@ -104,17 +101,19 @@ for (var i = 0; i <= numBlocks; i++) {
   var newBtn = document.createElement('button')
   var newSave = document.createElement('i')
 
+  
   //time
   newTime.classList.add('col-2', 'col-md-1', 'hour', 'text-center', 'py-3')
   newTime.textContent = i + 'PM'
-
-
-  //originally start from 0, but changed to 12
-  if (newTime.innerText === '0PM') {
-    newTime.innerText = '12AM'
+  newTime.setAttribute('number', i)
+  if (newTime.textContent === 0 + 'PM') {
+    newTime.textContent = 12 + 'AM'
+    newTime.setAttribute('number', 12)
   }
-
- 
+  
+  var newTimeNumber = newTime.getAttribute('number')
+  
+  
 
   //textarea
   newText.classList.add('col-8', 'col-md-10', 'description')
@@ -131,19 +130,22 @@ for (var i = 0; i <= numBlocks; i++) {
 
   newBlock.setAttribute("id", 'hour-' + i);
   newBlock.classList.add("time-block","row");
-
-  if(i > hourNow) {
-    newBlock.classList.add('future')
-  } else if ( i < hourNow) {
+  
+  
+  if(hourNow === newTimeNumber) {
+    newBlock.classList.add('present')
+  } else if ( hourNow < newTimeNumber) {
     newBlock.classList.add('past')
   } else {
-    newBlock.classList.add('present')
-  }
+    newBlock.classList.add('future')
+  } 
  
   newBlock.append(newTime, newText, newBtn)
   newBtn.append(newSave)
-  
   future.append(newBlock);
+  
+ 
 }
+console.log(newTime)
 
 saveText();
