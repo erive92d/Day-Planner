@@ -34,18 +34,10 @@ function displayTime() {
 }
 
 displayTime();
-var hourNow = dayjs().format("H");
+var hourNow = dayjs().format("h");
+hourNow = 9
 
-console.log(hourNow);
-// saveButton.click(function (event) {
-//   event.preventDefault();
-//   var element = event.target
-//   if(element.desCription === true) {
-//   var textArea = desCription.value
-//   localStorage.setItem('task', textArea)
-//   }
-// }
-// );
+// console.log(hourNow)
 
 function saveText() {
   var saveIcon = document.querySelectorAll(".fas");
@@ -69,22 +61,89 @@ function saveText() {
 // function changeColor() {
 
 // }
+function timeBlockHTML() {
+  for(var i = 0; i < timeBlock.length; i++) {
+    timeBlock[i].classList.remove('past','present','future')
+    
+    if(hourNow > timeBlock[i].innerText.match(/\d{9}/)) {
+      timeBlock[i].classList.add('past')
+    }
+    else if(hourNow < timeBlock[i].innerText.match(/\d{9}/)) {
+      timeBlock[i].classList.add('future')
+    } else {
+      timeBlock[i].classList.add('present')
+    }
+  }
+}
 
-var future = document.querySelector(".container-fluid");
-var newBlock = document.createElement("div");
-var newText = document.createElement("textarea");
-newText.classList.add('col-8')
-newText.classList.add('col-md-10')
-newText.classList.add('description')
-newText.setAttribute('rows', 3)
 
-newBlock.setAttribute("id", "hour-12");
-newBlock.classList.add("time-block");
-newBlock.classList.add("row");
-newBlock.classList.add("future");
 
-newBlock.appendChild(newText)
-console.log(newBlock);
-future.appendChild(newBlock);
+timeBlockHTML()
+
+
+
+console.log(timeBlock[0].innerText.match(/[0-9]+/g))
+console.log(timeBlock[0].classList)
+
+
+// var newTest = timeBlock[0].innerText.match(/[a-zA-Z]+|[0-9]+/g)
+// console.log(newTest)
+
+
+var numBlocks = 5;
+
+for (var i = 0; i <= numBlocks; i++) {
+
+  
+
+
+  var future = document.querySelector(".container-fluid");
+  var newBlock = document.createElement("div");
+  var newText = document.createElement("textarea");
+  var newTime = document.createElement('div');
+  var newBtn = document.createElement('button')
+  var newSave = document.createElement('i')
+
+  //time
+  newTime.classList.add('col-2', 'col-md-1', 'hour', 'text-center', 'py-3')
+  newTime.textContent = i + 'PM'
+
+
+  //originally start from 0, but changed to 12
+  if (newTime.innerText === '0PM') {
+    newTime.innerText = '12AM'
+  }
+
+ 
+
+  //textarea
+  newText.classList.add('col-8', 'col-md-10', 'description')
+  newText.setAttribute('rows', 3)
+
+  //button
+  newBtn.classList.add('btn', 'saveBtn', 'col-2', 'col-md-1')
+  newBtn.setAttribute('aria-label', 'save')
+
+  //save
+  newSave.classList.add('fas', 'fa-save')
+  newSave.setAttribute('aria-hidden', true)
+
+
+  newBlock.setAttribute("id", 'hour-' + i);
+  newBlock.classList.add("time-block","row");
+
+  if(i > hourNow) {
+    newBlock.classList.add('future')
+  } else if ( i < hourNow) {
+    newBlock.classList.add('past')
+  } else {
+    newBlock.classList.add('present')
+  }
+ 
+  newBlock.append(newTime, newText, newBtn)
+  newBtn.append(newSave)
+  
+  future.append(newBlock);
+}
 
 saveText();
