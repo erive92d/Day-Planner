@@ -49,12 +49,13 @@ function create912() {
     var newTextArea = document.createElement('textarea');
     var newButton = document.createElement('button')
     var newI = document.createElement('i')
+    var clearButton = document.createElement('button');
+    var newIclear = document.createElement('i')
 
 
 
 
-
-    newHour.classList.add('col-2', 'col-md-1', 'hour', 'text-center', 'py-3')
+    newHour.classList.add('col-2', 'col-md-1', 'hour', 'text-center', 'py-3','bgColor')
     newHour.setAttribute('id', 9 + i)
     var hourID = newHour.getAttribute('id')
     newHour.textContent = hourID + 'AM'
@@ -73,16 +74,22 @@ function create912() {
 
     newButton.classList.add('btn', 'saveBtn', 'col-2', 'col-md-1')
     newButton.setAttribute('aria-label', 'save')
+    clearButton.classList.add('btn','clrBtn','col-2','col-md-1')
+    clearButton.setAttribute('aria-label', 'save')
 
     newI.classList.add('fas', 'fa-save')
     newI.setAttribute('aria-hidden', 'true')
 
+    newIclear.classList.add('fas', 'fa-save')
+    newIclear.setAttribute('aria-hidden', 'true')
 
 
 
+    console.log(clearButton)
 
     newButton.append(newI)
-    newDiv.append(newHour, newTextArea, newButton)
+    clearButton.append(newIclear)
+    newDiv.append(newHour, newTextArea, newButton,clearButton)
 
 
     mainContainer.append(newDiv)
@@ -130,7 +137,7 @@ function create1to5() {
 
 
 
-    newHour.classList.add('col-2', 'col-md-1', 'hour', 'text-center', 'py-3')
+    newHour.classList.add('col-2', 'col-md-1', 'hour', 'text-center', 'py-3','bgColor')
     newHour.setAttribute('id', i)
     var hourID = newHour.getAttribute('id')
     newHour.textContent = hourID + 'PM'

@@ -1,6 +1,7 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: monospace, sans-serif;
     font-size: 16px;
+
   }
   
   textarea {
@@ -18,10 +19,19 @@ body {
   
   .time-block {
     border-radius: 15px;
+    border: 3px solid black;
+    flex-direction: row;
+    
+   
   }
   
   .row {
+    
     border-top: 1px solid white;
+    
+   
+    
+    
   }
   
   .hour {
@@ -51,10 +61,31 @@ body {
     border-bottom-right-radius: 15px;
     background-color: #06aed5;
     color: white;
+    height: 50px;
+ 
+    
   }
-  
+  .clrBtn {
+    border-left: 1px solid black;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #06aed5;
+    color: white;
+    height: 50px;
+   
+    
+ 
+ 
+    
+  }
+
   .saveBtn i:hover {
     font-size: 20px;
     transition: all 0.3s ease-in-out;
   }
   
+  .bgColor {
+    background-color: #EBA538;
+    border-top-left-radius: 0.7rem;
+    border-bottom-left-radius: 0.7rem;
+  }
