@@ -30,10 +30,12 @@ $(function () {
 var currentTime = dayjs().format('MMMM DD')
 displayDay.append(currentTime)
 
-var currentHour = dayjs().format('h')
+
+var currentHour = dayjs().format('H')
+// currentHour = 17
 
 
-
+console.log(currentHour)
 // var numDivs = 4;
 
 
@@ -134,12 +136,12 @@ function create1to5() {
     newHour.textContent = hourID + 'PM'
 
 
-    newDiv.setAttribute('hour-', 9 + i)
+    newDiv.setAttribute('hour-', i)
     newDiv.classList.add('time-block', 'row')
 
     newTextArea.classList.add('col-8', 'col-md-10', 'description')
     newTextArea.setAttribute('rows', 3)
-    newTextArea.setAttribute('number', 9 + i)
+    newTextArea.setAttribute('number', 12 + i)
     var textNumber = newTextArea.getAttribute('number')
 
 
@@ -164,6 +166,30 @@ function create1to5() {
     i++
   }
 
+
+  var allTextAreas = document.querySelectorAll('textarea')
+  
+
+  for (var i = 0; i < allTextAreas.length; i++) {
+    var valueNum = allTextAreas[i].getAttribute('number')
+    var turnNums = Number(valueNum)
+    console.log(turnNums)
+    
+    console.log(allTextAreas[i])
+    if (turnNums < currentHour) {
+      allTextAreas[i].classList.add('past')
+
+    } else if (turnNums > currentHour) {
+      allTextAreas[i].classList.add('future')
+      
+     
+    } else {
+      allTextAreas[i].classList.add('present')
+     
+    
+
+    }
+  }
 }
 
 
