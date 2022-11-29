@@ -61,23 +61,11 @@ body {
     border-bottom-right-radius: 15px;
     background-color: #06aed5;
     color: white;
-    height: 50px;
- 
-    
-  }
-  .clrBtn {
-    border-left: 1px solid black;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: #06aed5;
-    color: white;
-    height: 50px;
    
-    
- 
  
     
   }
+
 
   .saveBtn i:hover {
     font-size: 20px;
@@ -88,4 +76,9 @@ body {
     background-color: #EBA538;
     border-top-left-radius: 0.7rem;
     border-bottom-left-radius: 0.7rem;
+  }
+
+  #currentDay {
+    font-size: 250%;
+    font-weight: 700;
   }

@@ -2,8 +2,8 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-var displayDay = $('#currentDay')
-var mainContainer = $('.container-lg')
+var displayDay = $("#currentDay");
+var mainContainer = $(".container-lg");
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -25,207 +25,191 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 });
 
+var currentTime = dayjs().format("MMMM DD dddd");
+displayDay.append(currentTime);
 
-
-var currentTime = dayjs().format('MMMM DD')
-displayDay.append(currentTime)
-
-
-var currentHour = dayjs().format('H')
+var currentHour = dayjs().format("H");
 // currentHour = 17
 
-
-console.log(currentHour)
+// console.log(currentHour);
 // var numDivs = 4;
-
-
 
 //from 9AM to 12AM
 function create912() {
   var i = 0;
   while (i < 4) {
-    var newDiv = document.createElement('div')
-    var newHour = document.createElement('div')
-    var newTextArea = document.createElement('textarea');
-    var newButton = document.createElement('button')
-    var newI = document.createElement('i')
-    var clearButton = document.createElement('button');
-    var newIclear = document.createElement('i')
+    var newDiv = document.createElement("div");
+    var newHour = document.createElement("div");
+    var newTextArea = document.createElement("textarea");
+    var newButton = document.createElement("button");
+    var newI = document.createElement("i");
+    var clearButton = document.createElement("button");
+    var newIclear = document.createElement("i");
 
+    newHour.classList.add(
+      "col-2",
+      "col-md-1",
+      "hour",
+      "text-center",
+      "py-3",
+      "bgColor"
+    );
+    newHour.setAttribute("id", 9 + i);
+    var hourID = newHour.getAttribute("id");
+    newHour.textContent = hourID + "AM";
 
+    newDiv.setAttribute("hour-", 9 + i);
+    newDiv.classList.add("time-block", "row");
 
+    newTextArea.classList.add("col-8", "col-md-10", "description");
+    newTextArea.setAttribute("rows", 3);
+    newTextArea.setAttribute("number", 9 + i);
+    var textNumber = newTextArea.getAttribute("number");
 
-    newHour.classList.add('col-2', 'col-md-1', 'hour', 'text-center', 'py-3','bgColor')
-    newHour.setAttribute('id', 9 + i)
-    var hourID = newHour.getAttribute('id')
-    newHour.textContent = hourID + 'AM'
+    newButton.classList.add("btn", "saveBtn", "col-2", "col-md-1");
+    newButton.setAttribute("aria-label", "save");
+    clearButton.classList.add("btn", "saveBtn", "col-2", "col-md-1");
+    clearButton.setAttribute("aria-label", "save");
 
+    newI.classList.add("fas", "fa-save");
+    newI.setAttribute("aria-hidden", "true");
 
-    newDiv.setAttribute('hour-', 9 + i)
-    newDiv.classList.add('time-block', 'row')
+    newIclear.classList.add("fas", "fa-save");
+    newIclear.setAttribute("aria-hidden", "true");
 
-    newTextArea.classList.add('col-8', 'col-md-10', 'description')
-    newTextArea.setAttribute('rows', 3)
-    newTextArea.setAttribute('number', 9 + i)
-    var textNumber = newTextArea.getAttribute('number')
+    // console.log(clearButton);
 
+    newButton.append(newI);
+    clearButton.append(newIclear);
+    newDiv.append(newHour, newTextArea, newButton);
 
+    mainContainer.append(newDiv);
 
-
-    newButton.classList.add('btn', 'saveBtn', 'col-2', 'col-md-1')
-    newButton.setAttribute('aria-label', 'save')
-    clearButton.classList.add('btn','clrBtn','col-2','col-md-1')
-    clearButton.setAttribute('aria-label', 'save')
-
-    newI.classList.add('fas', 'fa-save')
-    newI.setAttribute('aria-hidden', 'true')
-
-    newIclear.classList.add('fas', 'fa-save')
-    newIclear.setAttribute('aria-hidden', 'true')
-
-
-
-    console.log(clearButton)
-
-    newButton.append(newI)
-    clearButton.append(newIclear)
-    newDiv.append(newHour, newTextArea, newButton,clearButton)
-
-
-    mainContainer.append(newDiv)
-
-    i++
+    i++;
   }
-  var allTextAreas = document.querySelectorAll('textarea')
-  
+  var allTextAreas = document.querySelectorAll("textarea");
 
   for (var i = 0; i < allTextAreas.length; i++) {
-    var valueNum = allTextAreas[i].getAttribute('number')
-    var turnNums = Number(valueNum)
-    console.log(turnNums)
-    
-    console.log(allTextAreas[i])
+    var valueNum = allTextAreas[i].getAttribute("number");
+    var turnNums = Number(valueNum);
+    // console.log(turnNums);
+
+    // console.log(allTextAreas[i]);
     if (turnNums < currentHour) {
-      allTextAreas[i].classList.add('past')
-
+      allTextAreas[i].classList.add("past");
     } else if (turnNums > currentHour) {
-      allTextAreas[i].classList.add('future')
-      
-     
+      allTextAreas[i].classList.add("future");
     } else {
-      allTextAreas[i].classList.add('present')
-     
-    
-
+      allTextAreas[i].classList.add("present");
     }
   }
-
-
 }
 
 //from 1PM to 5PM
 function create1to5() {
   var i = 1;
   while (i <= 5) {
-    var newDiv = document.createElement('div')
-    var newHour = document.createElement('div')
-    var newTextArea = document.createElement('textarea');
-    var newButton = document.createElement('button')
-    var newI = document.createElement('i')
+    var newDiv = document.createElement("div");
+    var newHour = document.createElement("div");
+    var newTextArea = document.createElement("textarea");
+    var newButton = document.createElement("button");
+    var newI = document.createElement("i");
 
+    newHour.classList.add(
+      "col-2",
+      "col-md-1",
+      "hour",
+      "text-center",
+      "py-3",
+      "bgColor"
+    );
+    newHour.setAttribute("id", i);
+    var hourID = newHour.getAttribute("id");
+    newHour.textContent = hourID + "PM";
 
+    newDiv.setAttribute("hour-", i);
+    newDiv.classList.add("time-block", "row");
 
+    newTextArea.classList.add("col-8", "col-md-10", "description");
+    newTextArea.setAttribute("rows", 3);
+    newTextArea.setAttribute("number", 12 + i);
+    var textNumber = newTextArea.getAttribute("number");
 
+    newButton.classList.add("btn", "saveBtn", "col-2", "col-md-1");
+    newButton.setAttribute("aria-label", "save");
 
-    newHour.classList.add('col-2', 'col-md-1', 'hour', 'text-center', 'py-3','bgColor')
-    newHour.setAttribute('id', i)
-    var hourID = newHour.getAttribute('id')
-    newHour.textContent = hourID + 'PM'
+    newI.classList.add("fas", "fa-save");
+    newI.setAttribute("aria-hidden", "true");
 
+    newButton.append(newI);
+    newDiv.append(newHour, newTextArea, newButton);
 
-    newDiv.setAttribute('hour-', i)
-    newDiv.classList.add('time-block', 'row')
+    mainContainer.append(newDiv);
 
-    newTextArea.classList.add('col-8', 'col-md-10', 'description')
-    newTextArea.setAttribute('rows', 3)
-    newTextArea.setAttribute('number', 12 + i)
-    var textNumber = newTextArea.getAttribute('number')
-
-
-
-
-    newButton.classList.add('btn', 'saveBtn', 'col-2', 'col-md-1')
-    newButton.setAttribute('aria-label', 'save')
-
-    newI.classList.add('fas', 'fa-save')
-    newI.setAttribute('aria-hidden', 'true')
-
-
-
-
-
-    newButton.append(newI)
-    newDiv.append(newHour, newTextArea, newButton)
-
-
-    mainContainer.append(newDiv)
-
-    i++
+    i++;
   }
 
-
-  var allTextAreas = document.querySelectorAll('textarea')
-  
+  var allTextAreas = document.querySelectorAll("textarea");
 
   for (var i = 0; i < allTextAreas.length; i++) {
-    var valueNum = allTextAreas[i].getAttribute('number')
-    var turnNums = Number(valueNum)
-    console.log(turnNums)
-    
-    console.log(allTextAreas[i])
+    var valueNum = allTextAreas[i].getAttribute("number");
+    var turnNums = Number(valueNum);
+    // console.log(turnNums);
+
+    // console.log(allTextAreas[i]);
     if (turnNums < currentHour) {
-      allTextAreas[i].classList.add('past')
-
+      allTextAreas[i].classList.add("past");
     } else if (turnNums > currentHour) {
-      allTextAreas[i].classList.add('future')
-      
-     
+      allTextAreas[i].classList.add("future");
     } else {
-      allTextAreas[i].classList.add('present')
-     
-    
-
+      allTextAreas[i].classList.add("present");
     }
   }
 }
-
-
 
 //save
 
 function saveText() {
   var saveIcon = document.querySelectorAll(".fas");
+  var test;
   for (var i = 0; i < saveIcon.length; i++) {
+    
     var currentItem = saveIcon[i];
     currentItem.setAttribute("id", [i]);
-
+    
     saveIcon[i].addEventListener("click", function (event) {
       event.preventDefault();
       var element = event.target;
       if (element.matches(".fa-save")) {
         var textarea = element.parentElement.previousElementSibling.value;
-        var test = element.getAttribute("id");
+        
+         test = element.getAttribute("id");
+    
         localStorage.setItem(test, textarea);
-        console.log(currentItem);
+        
+    
+        
+        
       }
+      
     });
+  } 
+  var textBars = document.querySelectorAll('.description')
+  for(var i = 0; i < textBars.length; i++) {
+    textBars[i].textContent = localStorage.getItem(i)
+
+
   }
+  console.log(textBars)
+
 }
 
+// var lead = $('.lead')
 
+// localStorage.setItem('test','testing')
+// lead.text(localStorage.getItem('test'))
 
-
-
-create912()
-create1to5()
-saveText()
+create912();
+create1to5();
+saveText();
+console.log(localStorage.getItem(5))
