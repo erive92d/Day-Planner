@@ -19,15 +19,16 @@ body {
   
   .time-block {
     border-radius: 15px;
-    border: 3px solid black;
-    flex-direction: row;
     
-   
   }
+
+
   
   .row {
     
+    
     border-top: 1px solid white;
+   
     
    
     
@@ -76,6 +77,7 @@ body {
     background-color: #EBA538;
     border-top-left-radius: 0.7rem;
     border-bottom-left-radius: 0.7rem;
+   
   }
 
   #currentDay {

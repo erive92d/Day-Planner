@@ -196,20 +196,34 @@ function saveText() {
   } 
   var textBars = document.querySelectorAll('.description')
   for(var i = 0; i < textBars.length; i++) {
+    textBars[i].setAttribute('style','color:black; font-weight: 700; font-size: 150%;')
     textBars[i].textContent = localStorage.getItem(i)
-
-
   }
-  console.log(textBars)
+
 
 }
 
-// var lead = $('.lead')
 
-// localStorage.setItem('test','testing')
-// lead.text(localStorage.getItem('test'))
+
 
 create912();
 create1to5();
 saveText();
-console.log(localStorage.getItem(5))
+
+//footer
+
+var footer = document.createElement('footer');
+var footerItem = document.createElement('p')
+var anchor = document.createElement('a')
+
+anchor.setAttribute('href','https://github.com/erive92d')
+anchor.textContent = 'Github'
+anchor.setAttribute('style','text-decoration: none; color: black;')
+
+footer.setAttribute('style','text-align: center; margin-top: 3%;')
+
+footerItem.textContent = 'Created by Deorren Erive'
+footerItem.setAttribute('style','font-weight: 700;')
+
+footer.append(footerItem,anchor)
+mainContainer.append(footer)
