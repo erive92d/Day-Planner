@@ -9,6 +9,6 @@ It has it's dedicated time and date so you won't miss anything as time pass by.
 
 
  
-[2022-11-28](https://user-images.githubusercontent.com/110507887/204414399-294ec384-596a-4e7f-a8b2-03ac0cbc19e1.png)
+[[2022-11-28](https://user-images.githubusercontent.com/110507887/204414399-294ec384-596a-4e7f-a8b2-03ac0cbc19e1.png)](https://user-images.githubusercontent.com/110507887/204414399-294ec384-596a-4e7f-a8b2-03ac0cbc19e1.png)
 
 https://erive92d.github.io/Day-Planner/
